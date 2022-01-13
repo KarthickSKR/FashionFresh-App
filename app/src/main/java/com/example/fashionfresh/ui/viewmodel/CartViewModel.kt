@@ -14,16 +14,19 @@ import javax.inject.Inject
 class CartViewModel @Inject constructor(val productRepository: ProductRepository) : ViewModel() {
 
     var productList : MutableLiveData<List<ProductsRoom>>? = MutableLiveData()
+    var totalPrice : MutableLiveData<String>? = MutableLiveData()
 
     fun getProducts() {
         CoroutineScope(Dispatchers.IO).launch {
             productList?.postValue(productRepository.getAllProduct())
             println("ProducList :"+productRepository.getAllProduct())
+            getCartTotalPrice()
         }
     }
 
     fun updateProduct(productid: String, quantity: Int){
         productRepository.updateProduct(productid,quantity)
+        getCartTotalPrice()
     }
     fun getQuantity(product: ProductsRoom):Int{
         var i = 0
@@ -33,10 +36,27 @@ class CartViewModel @Inject constructor(val productRepository: ProductRepository
         return i
     }
 
+    fun getCartTotalPrice(): Double {
+        val productList = productRepository.getAllProduct()
+        var total = 0.0
+        productList.forEach {
+            val priceWithoutSymbol = it.price.replace("₹","")
+            val price = priceWithoutSymbol.replace(",","")
+
+            val productTotal = it.quantity * price.toDouble()
+            total += productTotal
+        }
+
+        println("Total "+total)
+        totalPrice?.postValue("₹ "+total)
+        return total
+    }
+
 
     fun deleteProduct(productid: String){
         CoroutineScope(Dispatchers.IO).launch{
             productRepository.deleteProduct(productid)
+            getCartTotalPrice()
         }
 
     }

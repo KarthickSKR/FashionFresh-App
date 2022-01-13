@@ -42,12 +42,13 @@ class CartAdapter(
                 }
             }
             binding.dec.setOnClickListener {
+                CoroutineScope(Dispatchers.IO).launch {
+                cartViewModel.getCartTotalPrice()
                 if (i <= 1) {
 //                    binding.qtyLayout.visibility = View.GONE
                     cartViewModel.deleteProduct(product.productid)
                 } else {
                     i--
-                    CoroutineScope(Dispatchers.IO).launch {
                         cartViewModel.updateProduct(product.productid, i)
                     }
                     binding.qtycount.setText(""+i)

@@ -33,11 +33,14 @@ class CartFragment : Fragment() {
 
     private fun initUI(binding: FragmentCartBinding) {
         cartViewModel.getProducts()
-        cartViewModel.productList?.observe(this.viewLifecycleOwner, Observer {
+        cartViewModel.productList?.observe(this.viewLifecycleOwner, {
             val adapter = CartAdapter(it!!, cartViewModel)
             binding.cartRecyclerView.layoutManager = LinearLayoutManager(context)
             binding.cartRecyclerView.adapter = adapter
             println("cartProducts ${it}")
+        })
+        cartViewModel.totalPrice?.observe(this.viewLifecycleOwner,{
+            binding.totalPrice.text = it
         })
 
     }
