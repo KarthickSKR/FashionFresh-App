@@ -57,6 +57,7 @@ class CartViewModel @Inject constructor(val productRepository: ProductRepository
         CoroutineScope(Dispatchers.IO).launch{
             productRepository.deleteProduct(productid)
             getCartTotalPrice()
+            getProducts()
         }
 
     }
