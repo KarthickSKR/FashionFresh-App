@@ -7,6 +7,6 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="LightPink">#FAA0A0</color>
-    <color name="CoralPink">#F88379</color>
+    <color name="CoralPink">#FAA0A0</color>CoralPink
+    <color name="LightPink">#F88379</color>
 </resources>

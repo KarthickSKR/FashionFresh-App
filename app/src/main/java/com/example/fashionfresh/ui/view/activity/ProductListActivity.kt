@@ -1,10 +1,10 @@
 package com.example.fashionfresh.ui.view.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import com.example.fashionfresh.R
 import com.example.fashionfresh.databinding.ActivityProductListBinding
 import dagger.hilt.android.AndroidEntryPoint

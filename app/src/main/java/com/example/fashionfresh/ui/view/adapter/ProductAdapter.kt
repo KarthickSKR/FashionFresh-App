@@ -54,7 +54,6 @@ class ProductAdapter(
             binding.product = currentProduct
             Glide.with(itemView.context).load(currentProduct.image).into(binding.productImage)
             CoroutineScope(Dispatchers.IO).launch {
-                println("product qty ${productViewModel.getQuantity(currentProduct)}")
                 if (productViewModel.getQuantity(currentProduct) > 0) {
                     i = productViewModel.getQuantity(currentProduct)
                 }
