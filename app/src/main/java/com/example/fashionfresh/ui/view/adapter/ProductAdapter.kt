@@ -90,6 +90,10 @@ class ProductAdapter(
 
         }
     }
+
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
 }
 
 
