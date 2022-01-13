@@ -3,7 +3,6 @@ package com.example.fashionfresh.ui.view.fragment
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -18,7 +17,6 @@ import com.example.fashionfresh.ui.view.adapter.ProductAdapter
 import com.example.fashionfresh.ui.viewmodel.ProductViewModel
 import com.example.fashionfresh.utils.Resource
 import com.example.fashionfresh.utils.Status
-import com.example.fashionfresh.utils.Utils
 import dagger.hilt.android.AndroidEntryPoint
 
 
