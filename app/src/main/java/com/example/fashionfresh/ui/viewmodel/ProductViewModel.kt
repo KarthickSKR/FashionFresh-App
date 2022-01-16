@@ -28,13 +28,18 @@ class ProductViewModel @Inject constructor(private val productRepository: Produc
 
     private fun fetchProducts() {
         viewModelScope.launch {
-            products.postValue(Resource.loading(null))
-            productRepository.getProducts().let {
-                if (it.isSuccessful) {
-                    products.postValue(Resource.success(it.body()))
-                    println("response: ${it.body()}")
-                } else products.postValue(Resource.error(it.errorBody().toString(), null))
+            try {
+                products.postValue(Resource.loading(null))
+                productRepository.getProducts().let {
+                    if (it.isSuccessful) {
+                        products.postValue(Resource.success(it.body()))
+                        println("response: ${it.body()}")
+                    } else products.postValue(Resource.error(it.errorBody().toString(), null))
+                }
             }
+           catch (e:Exception){
+               e.printStackTrace()
+           }
         }
 
     }
