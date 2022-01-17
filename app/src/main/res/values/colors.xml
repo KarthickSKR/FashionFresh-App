@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="CoralPink">#FAA0A0</color>CoralPink
     <color name="LightPink">#F88379</color>
+    <color name="Green">#90EE90</color>
+    <color name="LightRed">#FF0000</color>
 </resources>
