@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fashionfresh.R
@@ -24,15 +23,19 @@ import dagger.hilt.android.AndroidEntryPoint
 class ProductListFragment : Fragment(R.layout.fragment_product_list) {
 
     private val productViewModel: ProductViewModel by viewModels()
-    lateinit var productAdapter: ProductAdapter
+    private lateinit var productAdapter: ProductAdapter
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentProductListBinding.bind(view)
         setupObserver(binding)
     }
 
+
+
+
     private fun setupObserver(binding: FragmentProductListBinding) {
-        productViewModel.prdcts.observe(this, Observer { response ->
+        productViewModel.prdcts.observe(this, { response ->
             response.let {
                 when (it.status) {
                     Status.SUCCESS -> {
